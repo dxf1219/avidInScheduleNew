@@ -1,0 +1,223 @@
+<Root>
+<General>
+<item Name="Count">278</item>
+<item Name="StreamCount">1</item>
+<item Name="StreamKind">General</item>
+<item Name="StreamKindID">0</item>
+<item Name="Inform">Complete name                            : H:\arcout\N20161117154638888.mxf
+Format                                   : MXF
+Format_Commercial_IfAny                  : XDCAM HD422
+Format profile                           : OP-1a
+Format settings                          : Closed / Complete
+File size                                : 1.03 GiB
+Duration                                 : 2mn 48s
+Overall bit rate mode                    : Constant
+Overall bit rate                         : 52.6 Mbps
+Encoded date                             : 2016-11-17 15:43:30.000
+Writing application                      : Arcsoft MXF Muxer 2.0.0.29
+Writing library                          : Arcsoft MXF Muxer 2.0.0.29
+</item>
+<item Name="VideoCount">1</item>
+<item Name="AudioCount">2</item>
+<item Name="Video_Format_List">MPEG Video</item>
+<item Name="Video_Format_WithHint_List">MPEG Video</item>
+<item Name="Video_Codec_List">MPEG-2 Video</item>
+<item Name="Audio_Format_List">PCM / PCM</item>
+<item Name="Audio_Format_WithHint_List">PCM / PCM</item>
+<item Name="Audio_Codec_List">PCM / PCM</item>
+<item Name="CompleteName">H:\arcout\N20161117154638888.mxf</item>
+<item Name="FolderName">H:\arcout</item>
+<item Name="FileName">N20161117154638888</item>
+<item Name="FileExtension">mxf</item>
+<item Name="Format">MXF</item>
+<item Name="Format_Commercial">XDCAM HD422</item>
+<item Name="Format_Commercial_IfAny">XDCAM HD422</item>
+<item Name="Format_Profile">OP-1a</item>
+<item Name="Format_Settings">Closed / Complete</item>
+<item Name="InternetMediaType">application/mxf</item>
+<item Name="Codec">MXF</item>
+<item Name="Codec_Settings">Closed / Complete</item>
+<item Name="FileSize">1110765308</item>
+<item Name="Duration">168840</item>
+<item Name="OverallBitRate_Mode">CBR</item>
+<item Name="OverallBitRate">52630433</item>
+<item Name="StreamSize">6889388</item>
+<item Name="StreamSize_Proportion">0.00620</item>
+<item Name="Encoded_Date">2016-11-17 15:43:30.000</item>
+<item Name="File_Created_Date">UTC 2016-11-17 07:47:21.000</item>
+<item Name="File_Created_Date_Local">2016-11-17 15:47:21.000</item>
+<item Name="File_Modified_Date">UTC 2016-11-17 07:48:04.679</item>
+<item Name="File_Modified_Date_Local">2016-11-17 15:48:04.679</item>
+<item Name="Encoded_Application">Arcsoft MXF Muxer 2.0.0.29</item>
+</General>
+<Video>
+<Row>
+<item Name="Count">203</item>
+<item Name="StreamCount">1</item>
+<item Name="StreamKind">Video</item>
+<item Name="StreamKindID">0</item>
+<item Name="Inform">ID                                       : 2
+Format                                   : MPEG Video
+Format_Commercial_IfAny                  : XDCAM HD422
+Format version                           : Version 2
+Format profile                           : 4:2:2@High
+Format settings, BVOP                    : Yes
+Format settings, Matrix                  : Custom
+Format settings, GOP                     : M=3, N=12
+Format_Settings_Wrapping                 : Frame
+Duration                                 : 2mn 48s
+Bit rate mode                            : Constant
+Bit rate                                 : 50.0 Mbps
+Width                                    : 1 920 pixels
+Height                                   : 1 080 pixels
+Display aspect ratio                     : 16:9
+Frame rate                               : 25.000 fps
+Standard                                 : PAL
+Color space                              : YUV
+Chroma subsampling                       : 4:2:2
+Bit depth                                : 8 bits
+Scan type                                : Interlaced
+Scan order                               : Top Field First
+Compression mode                         : Lossy
+Bits/(Pixel*Frame)                       : 0.965
+Stream size                              : 1 006 MiB (95%)
+Writing library                          : ArcSoft version 1.11.181.378001
+Delay_SDTI                               : 0
+</item>
+<item Name="ID">2</item>
+<item Name="Format">MPEG Video</item>
+<item Name="Format_Commercial">XDCAM HD422</item>
+<item Name="Format_Commercial_IfAny">XDCAM HD422</item>
+<item Name="Format_Version">Version 2</item>
+<item Name="Format_Profile">4:2:2@High</item>
+<item Name="Format_Settings">CustomMatrix / BVOP</item>
+<item Name="Format_Settings_BVOP">Yes</item>
+<item Name="Format_Settings_Matrix">Custom</item>
+<item Name="Format_Settings_Matrix_Data">10111112121213131313141414141415151515151516161616161616171717171717171718181819181818191A1A1A1A191B1B1B1B1B1C1C1C1C1E1E1E1F1F21</item>
+<item Name="Format_Settings_GOP">M=3, N=12</item>
+<item Name="Format_Settings_Wrapping">Frame</item>
+<item Name="InternetMediaType">video/MPV</item>
+<item Name="Codec">MPEG-2V</item>
+<item Name="Codec_Profile">4:2:2@High</item>
+<item Name="Codec_Settings">CustomMatrix</item>
+<item Name="Codec_Settings_Matrix">Custom</item>
+<item Name="Duration">168840</item>
+<item Name="BitRate_Mode">CBR</item>
+<item Name="BitRate">50000000</item>
+<item Name="Width">1920</item>
+<item Name="Height">1080</item>
+<item Name="PixelAspectRatio">1.000</item>
+<item Name="DisplayAspectRatio">1.778</item>
+<item Name="FrameRate">25.000</item>
+<item Name="FrameCount">4221</item>
+<item Name="Standard">PAL</item>
+<item Name="Resolution">8</item>
+<item Name="Colorimetry">4:2:2</item>
+<item Name="ColorSpace">YUV</item>
+<item Name="ChromaSubsampling">4:2:2</item>
+<item Name="BitDepth">8</item>
+<item Name="ScanType">Interlaced</item>
+<item Name="ScanOrder">TFF</item>
+<item Name="Interlacement">TFF</item>
+<item Name="Compression_Mode">Lossy</item>
+<item Name="Bits-(Pixel*Frame)">0.965</item>
+<item Name="Delay">0</item>
+<item Name="Delay_Source">Container</item>
+<item Name="Delay_Original">0</item>
+<item Name="Delay_Original_Settings">drop_frame_flag=0 / closed_gop=1 / broken_link=0</item>
+<item Name="Delay_Original_Source">Stream</item>
+<item Name="StreamSize">1055250000</item>
+<item Name="StreamSize_Proportion">0.95002</item>
+<item Name="Encoded_Library">ArcSoft version 1.11.181.378001</item>
+<item Name="BufferSize">102400000</item>
+<item Name="Delay_SDTI">0</item>
+<item Name="intra_dc_precision">9</item>
+</Row>
+</Video>
+<Audio>
+<Row>
+<item Name="Count">170</item>
+<item Name="StreamCount">2</item>
+<item Name="StreamKind">Audio</item>
+<item Name="StreamKindID">0</item>
+<item Name="StreamKindPos">1</item>
+<item Name="Inform">ID                                       : 3
+Format                                   : PCM
+Format settings, Endianness              : Little
+Format_Settings_Wrapping                 : Frame (AES)
+Duration                                 : 2mn 48s
+Bit rate mode                            : Constant
+Bit rate                                 : 1 152 Kbps
+Channel(s)                               : 1 channel
+Sampling rate                            : 48.0 KHz
+Bit depth                                : 24 bits
+Stream size                              : 23.2 MiB (2%)
+Delay_SDTI                               : 0
+</item>
+<item Name="ID">3</item>
+<item Name="Format">PCM</item>
+<item Name="Format_Commercial">PCM</item>
+<item Name="Format_Settings_Endianness">Little</item>
+<item Name="Format_Settings_Wrapping">Frame (AES)</item>
+<item Name="Codec">PCM</item>
+<item Name="Duration">168840</item>
+<item Name="BitRate_Mode">CBR</item>
+<item Name="BitRate">1152000</item>
+<item Name="Channel(s)">1</item>
+<item Name="SamplingRate">48000</item>
+<item Name="SamplingCount">8104320</item>
+<item Name="FrameCount">8104320</item>
+<item Name="Resolution">24</item>
+<item Name="BitDepth">24</item>
+<item Name="Delay">0</item>
+<item Name="Delay_Source">Container</item>
+<item Name="Video_Delay">0</item>
+<item Name="Video0_Delay">0</item>
+<item Name="StreamSize">24312960</item>
+<item Name="StreamSize_Proportion">0.02189</item>
+<item Name="Delay_SDTI">0</item>
+</Row>
+<Row>
+<item Name="Count">170</item>
+<item Name="StreamCount">2</item>
+<item Name="StreamKind">Audio</item>
+<item Name="StreamKindID">1</item>
+<item Name="StreamKindPos">2</item>
+<item Name="Inform">ID                                       : 4
+Format                                   : PCM
+Format settings, Endianness              : Little
+Format_Settings_Wrapping                 : Frame (AES)
+Duration                                 : 2mn 48s
+Bit rate mode                            : Constant
+Bit rate                                 : 1 152 Kbps
+Channel(s)                               : 1 channel
+Sampling rate                            : 48.0 KHz
+Bit depth                                : 24 bits
+Stream size                              : 23.2 MiB (2%)
+Delay_SDTI                               : 0
+</item>
+<item Name="ID">4</item>
+<item Name="Format">PCM</item>
+<item Name="Format_Commercial">PCM</item>
+<item Name="Format_Settings_Endianness">Little</item>
+<item Name="Format_Settings_Wrapping">Frame (AES)</item>
+<item Name="Codec">PCM</item>
+<item Name="Duration">168840</item>
+<item Name="BitRate_Mode">CBR</item>
+<item Name="BitRate">1152000</item>
+<item Name="Channel(s)">1</item>
+<item Name="SamplingRate">48000</item>
+<item Name="SamplingCount">8104320</item>
+<item Name="FrameCount">8104320</item>
+<item Name="Resolution">24</item>
+<item Name="BitDepth">24</item>
+<item Name="Delay">0</item>
+<item Name="Delay_Source">Container</item>
+<item Name="Video_Delay">0</item>
+<item Name="Video0_Delay">0</item>
+<item Name="StreamSize">24312960</item>
+<item Name="StreamSize_Proportion">0.02189</item>
+<item Name="Delay_SDTI">0</item>
+</Row>
+</Audio>
+</Root>

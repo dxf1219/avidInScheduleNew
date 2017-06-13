@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetMain" targetNamespace="http://tempuri.org/DataSetMain.xsd" xmlns:mstns="http://tempuri.org/DataSetMain.xsd" xmlns="http://tempuri.org/DataSetMain.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetMain" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetMain" msprop:Generator_UserDSName="DataSetMain">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="avidin" msprop:Generator_TableClassName="avidinDataTable" msprop:Generator_TableVarName="tableavidin" msprop:Generator_RowChangedName="avidinRowChanged" msprop:Generator_TablePropName="avidin" msprop:Generator_RowDeletingName="avidinRowDeleting" msprop:Generator_RowChangingName="avidinRowChanging" msprop:Generator_RowEvHandlerName="avidinRowChangeEventHandler" msprop:Generator_RowDeletedName="avidinRowDeleted" msprop:Generator_RowClassName="avidinRow" msprop:Generator_UserTableName="avidin" msprop:Generator_RowEvArgName="avidinRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ColAvidinName" msprop:Generator_ColumnVarNameInTable="columnColAvidinName" msprop:Generator_ColumnPropNameInRow="ColAvidinName" msprop:Generator_ColumnPropNameInTable="ColAvidinNameColumn" msprop:Generator_UserColumnName="ColAvidinName" type="xs:string" minOccurs="0" />
+              <xs:element name="ColIP" msprop:Generator_ColumnVarNameInTable="columnColIP" msprop:Generator_ColumnPropNameInRow="ColIP" msprop:Generator_ColumnPropNameInTable="ColIPColumn" msprop:Generator_UserColumnName="ColIP" type="xs:string" minOccurs="0" />
+              <xs:element name="ColScanPath" msprop:Generator_ColumnVarNameInTable="columnColScanPath" msprop:Generator_ColumnPropNameInRow="ColScanPath" msprop:Generator_ColumnPropNameInTable="ColScanPathColumn" msprop:Generator_UserColumnName="ColScanPath" type="xs:string" minOccurs="0" />
+              <xs:element name="ColTaskCount" msprop:Generator_ColumnVarNameInTable="columnColTaskCount" msprop:Generator_ColumnPropNameInRow="ColTaskCount" msprop:Generator_ColumnPropNameInTable="ColTaskCountColumn" msprop:Generator_UserColumnName="ColTaskCount" type="xs:int" minOccurs="0" />
+              <xs:element name="ColStatus" msprop:Generator_ColumnVarNameInTable="columnColStatus" msprop:Generator_ColumnPropNameInRow="ColStatus" msprop:Generator_ColumnPropNameInTable="ColStatusColumn" msprop:Generator_UserColumnName="ColStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="ColCheckTime" msprop:Generator_ColumnVarNameInTable="columnColCheckTime" msprop:Generator_ColumnPropNameInRow="ColCheckTime" msprop:Generator_ColumnPropNameInTable="ColCheckTimeColumn" msprop:Generator_UserColumnName="ColCheckTime" type="xs:string" minOccurs="0" />
+              <xs:element name="ColTaskName" msprop:Generator_ColumnVarNameInTable="columnColTaskName" msprop:Generator_ColumnPropNameInRow="ColTaskName" msprop:Generator_ColumnPropNameInTable="ColTaskNameColumn" msprop:Generator_UserColumnName="ColTaskName" type="xs:string" minOccurs="0" />
+              <xs:element name="ColIfTakeLongTask" msprop:Generator_ColumnVarNameInTable="columnColIfTakeLongTask" msprop:Generator_ColumnPropNameInRow="ColIfTakeLongTask" msprop:Generator_ColumnPropNameInTable="ColIfTakeLongTaskColumn" msprop:Generator_UserColumnName="ColIfTakeLongTask" type="xs:int" minOccurs="0" />
+              <xs:element name="ColTaskTimeLen" msprop:Generator_ColumnVarNameInTable="columnColTaskTimeLen" msprop:Generator_ColumnPropNameInRow="ColTaskTimeLen" msprop:Generator_ColumnPropNameInTable="ColTaskTimeLenColumn" msprop:Generator_UserColumnName="ColTaskTimeLen" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
