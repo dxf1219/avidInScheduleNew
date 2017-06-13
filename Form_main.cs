@@ -50,7 +50,6 @@ namespace avidInSchedule
                 Directory.CreateDirectory(Application.StartupPath + "\\counts");
             }
 
-
             if (!Directory.Exists(Application.StartupPath + "\\mediainfo"))
             {
                 Directory.CreateDirectory(Application.StartupPath + "\\mediainfo");
@@ -95,7 +94,6 @@ namespace avidInSchedule
                             
                 }  //else
             } // for(int i = 0 ;i < avidinserverlist.Count;i++)
-
 
             XmlNodeList mediaListNodes = root.SelectNodes("//mediaFiles");
             for (int i = 0; i < mediaListNodes.Count; i++)
@@ -176,8 +174,15 @@ namespace avidInSchedule
                 }
                 else
                 {
-                    this.richTextBox1.AppendText(text);
-                    of_SetRichCursor(richTextBox1);
+                    if (this.richTextBox1.Lines.Length < 10000)
+                    {
+                        this.richTextBox1.AppendText(text);
+                        of_SetRichCursor(richTextBox1);
+                    }
+                    else
+                    {
+                        this.richTextBox1.Clear();
+                    }
                 }
             }
             catch (Exception)
@@ -364,27 +369,6 @@ namespace avidInSchedule
                                 File.Copy(mediamd5, newlocalmd5file, true);
                                 WriteLogNew.writeLog("将md5设置成已处理状态!" + Path.GetFileName( mediamd5), logpath, "info");
                                 SetText(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " + "将md5设置成已处理状态!" +Path.GetFileName(  mediamd5) + "\n");
-
-                                //try
-                                //{
-                                //    File.Delete(mediamd5);
-                                //    WriteLogNew.writeLog("将MD5文件删除:" + Path.GetFileName(mediamd5), logpath, "info");
-                                //}
-                                //catch (Exception ee)
-                                //{
-                                //    WriteLogNew.writeLog("将MD5文件删除异常:" + Path.GetFileName(mediamd5) + ee.ToString(), logpath, "info");
-                                //    Thread.Sleep(1000);
-                                //    try
-                                //    {
-                                //        File.Delete(mediamd5);
-                                //        WriteLogNew.writeLog("将MD5文件删除:" + Path.GetFileName(mediamd5), logpath, "info");
-                                //    }
-                                //    catch (Exception eet)
-                                //    {
-                                //        WriteLogNew.writeLog("将MD5文件删除异常:" + Path.GetFileName(mediamd5) + eet.ToString(), logpath, "info");
-                                //    }
-                                //}//第一次删除异常
-
                                 filedelteTimes(mediamd5);
                                 continue;
                             } //超过重试次数
@@ -396,18 +380,16 @@ namespace avidInSchedule
                             //SetText(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") +" "DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " " + "生成文件统计失败!" + "\n");
                             continue;
                         }
-
                         TranscodeFileInfos transcodefileinfo = new TranscodeFileInfos();
                         transcodefileinfo.SPathxml = mediamd5;
-
                         //如果是xnews的xml 那么不需要下发到转码 只需要生成avidingest的xml即可
-                        if (mi.SrcFrom.ToLower().Equals("xnews"))
+                        try
                         {
-                          
-                            transcodefileinfo.Newavidfilename = Path.GetFileNameWithoutExtension(mediamd5) ;
+                            #region avid导入
+                            transcodefileinfo.Newavidfilename = Path.GetFileNameWithoutExtension(mediamd5);
                             transcodefileinfo.TranscodeFilePath = mi.TranscodeFilePath;
                             //生成avid ingest的xml
-                            string newavidingestxml = Application.StartupPath + "\\avidingestxml\\" + Path.GetFileNameWithoutExtension(mediamd5)+".xml";
+                            string newavidingestxml = Application.StartupPath + "\\avidingestxml\\" + Path.GetFileNameWithoutExtension(mediamd5) + ".xml";
                             File.Copy(Application.StartupPath + "\\avidin.xml", newavidingestxml, true);
 
                             XmlDocument docavidinxml = new XmlDocument();
@@ -416,19 +398,25 @@ namespace avidInSchedule
                             XmlNode sourceSystemNode = rootavidin.SelectSingleNode("//sourceSystem");
                             sourceSystemNode.InnerText = mi.SrcFrom;
 
-                            XmlNode fileNameNode = rootavidin.SelectSingleNode("//fileName");
-                            fileNameNode.InnerText = transcodefileinfo.Newavidfilename+".mxf";
-
                             //filePath
                             XmlNode filePathNodeavid = rootavidin.SelectSingleNode("//filePath");
-                            string mxffilepath = transcodefileinfo.TranscodeFilePath + "\\" + transcodefileinfo.Newavidfilename + ".mxf";
-                            string newmxffilepath = transcodefileinfo.TranscodeFilePath + "\\N" + DateTime.Now.ToString("yyyyMMddHHmmssfff")+".mxf";
+                            string mxffilepath = transcodefileinfo.TranscodeFilePath + "\\" + transcodefileinfo.Newavidfilename;
+                            if (!File.Exists(mxffilepath))
+                            {
+                                transcodefileinfo.Newavidfilename = transcodefileinfo.Newavidfilename + ".mxf";
+                                mxffilepath = transcodefileinfo.TranscodeFilePath + "\\" + transcodefileinfo.Newavidfilename;
+                            }
+                            string newmxffilepath = transcodefileinfo.TranscodeFilePath + "\\N" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".mxf";
+
+                            XmlNode fileNameNode = rootavidin.SelectSingleNode("//fileName");
+                            fileNameNode.InnerText = transcodefileinfo.Newavidfilename;
+
                             //  //先把视频文件改名成 NyyyyMMddHHmmssfff.mxf
                             try
                             {
                                 File.Move(mxffilepath, newmxffilepath);
-                                WriteLogNew.writeLog("将原素材修改名称:"+newmxffilepath,logpath,"info");
-                                WriteLogNew.writeLog("原素材名称:" +Path.GetFileName( mxffilepath) + " 新名称:" +Path.GetFileName( newmxffilepath), logpath, "info");
+                                WriteLogNew.writeLog("将原素材修改名称:" + newmxffilepath, logpath, "info");
+                                WriteLogNew.writeLog("原素材名称:" + Path.GetFileName(mxffilepath) + " 新名称:" + Path.GetFileName(newmxffilepath), logpath, "info");
 
                                 filePathNodeavid.InnerText = newmxffilepath;
 
@@ -454,7 +442,7 @@ namespace avidInSchedule
                                         if (sdur > longTaskTime)  //超过设定的最大时间 
                                         {
                                             iflongtasksend = true;
-                                            WriteLogNew.writeLog("该任务为长任务！",logpath,"info");
+                                            WriteLogNew.writeLog("该任务为长任务！", logpath, "info");
                                         }
                                         string tcdur = ConvertTime(sdur / 40);
                                         durationNode.InnerText = tcdur;
@@ -471,7 +459,7 @@ namespace avidInSchedule
                                 //interplay 路径
                                 XmlNode avidInterplayPathNode = rootavidin.SelectSingleNode("//avidInterplayPath");
 
-                                string xnewsmediaxml = mi.SPathxml + "\\" + transcodefileinfo.Newavidfilename + ".xml";
+                                string xnewsmediaxml = mi.SPathxml + "\\" + Path.GetFileNameWithoutExtension(transcodefileinfo.Newavidfilename) + ".xml";
 
                                 string interplayPath = getInterplayWithXnews(xnewsmediaxml);
 
@@ -482,13 +470,13 @@ namespace avidInSchedule
 
                                 XmlNode avidInterplayFileNameNode = rootavidin.SelectSingleNode("//avidInterplayFileName");
 
-                                avidInterplayFileNameNode.InnerText = transcodefileinfo.Newavidfilename + ".mxf";
+                                avidInterplayFileNameNode.InnerText = transcodefileinfo.Newavidfilename;
 
                                 docavidinxml.Save(newavidingestxml);
-                                
+
                                 WriteLogNew.writeLog("生成avid ingest xml!" + newavidingestxml, logpath, "info");
-                                
-                                SetText(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " + "生成avid ingest xml!" + Path.GetFileName( newavidingestxml)+"\n");
+
+                                SetText(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " + "生成avid ingest xml!" + Path.GetFileName(newavidingestxml) + "\n");
 
                                 //判断调度给那个avidingest程序 
                                 //判断任务的时长 确认可以下发的avidingest的数量
@@ -502,7 +490,7 @@ namespace avidInSchedule
                                             if (row.ColStatus.Equals("在线"))
                                             {
                                                 ingestrowList.Add(row);
-                                                WriteLogNew.writeLog("找到可用的server :" + row.ColAvidinName+"IP:"+row.ColIP, logpath, "info");
+                                                WriteLogNew.writeLog("找到可用的server :" + row.ColAvidinName + "IP:" + row.ColIP, logpath, "info");
                                             }
                                         }
                                     }
@@ -515,7 +503,7 @@ namespace avidInSchedule
                                         }
                                     }
                                 }
-                                WriteLogNew.writeLog("找到可用的server 数量:"+ingestrowList.Count.ToString(),logpath,"info");
+                                WriteLogNew.writeLog("找到可用的server 数量:" + ingestrowList.Count.ToString(), logpath, "info");
 
                                 DataSetMain.avidinRow rowfind = null;
                                 if (ingestrowList.Count > 0)
@@ -539,7 +527,6 @@ namespace avidInSchedule
                                         {
                                             WriteLogNew.writeLog("获取最佳avid ingest server  时长异常！" + ee.ToString(), logpath, "error");
                                         }
-
                                         int kk = 0;
                                         foreach (DataSetMain.avidinRow row in ingestrowList)
                                         {
@@ -561,7 +548,6 @@ namespace avidInSchedule
 
                                             kk++;
                                         }
-
                                     } // if (taskcount==0) 
 
                                     //找到当前执行任务最少的 avidingest  将任务下发给它
@@ -574,32 +560,12 @@ namespace avidInSchedule
                                         File.Copy(mediamd5, newlocalmd5file, true);
                                         WriteLogNew.writeLog("将文件设置成已处理状态!" + Path.GetFileName(mediamd5), logpath, "info");
                                         SetText(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " + "将文件设置成已处理状态!" + Path.GetFileName(mediamd5) + "\n");
-                                        //try
-                                        //{
-                                        //    File.Delete(mediamd5);
-                                        //    WriteLogNew.writeLog("将MD5文件删除:" + Path.GetFileName(mediamd5), logpath, "info");
-                                        //}
-                                        //catch (Exception ee)
-                                        //{
-                                        //    WriteLogNew.writeLog("将MD5文件删除异常:" + Path.GetFileName(mediamd5)+ee.ToString(), logpath, "info");
-                                        //    Thread.Sleep(1000);
-                                        //    try
-                                        //    {
-                                        //        File.Delete(mediamd5);
-                                        //        WriteLogNew.writeLog("将MD5文件删除:" + Path.GetFileName(mediamd5), logpath, "info");
-                                        //    }
-                                        //    catch (Exception eet)
-                                        //    {
-                                        //        WriteLogNew.writeLog("将MD5文件删除异常:" + Path.GetFileName(mediamd5) + eet.ToString(), logpath, "info");
-                                        //    }
-
-                                        //} //第一次异常
 
                                         filedelteTimes(mediamd5);
                                     }
                                     catch (Exception ee)
                                     {
-                                        WriteLogNew.writeLog("下发任务异常:"+ee.ToString(),logpath,"error");
+                                        WriteLogNew.writeLog("下发任务异常:" + ee.ToString(), logpath, "error");
                                     }
                                     Thread.Sleep(4000);
                                 }
@@ -610,27 +576,29 @@ namespace avidInSchedule
                                     createSMStxt(warnlog);
                                     try
                                     {
-                                        //File.Delete(newcountfile);
-                                        //WriteLogNew.writeLog("删除count文件成功!" + newcountfile, logpath, "info");
-                                        filedelteTimes(newcountfile);    
-                     
-                                        File.Move(newmxffilepath,mxffilepath );
+                                        filedelteTimes(newcountfile);
+                                        File.Move(newmxffilepath, mxffilepath);
                                         WriteLogNew.writeLog("将素材" + newmxffilepath + "修改名称:" + mxffilepath, logpath, "info");
                                         Thread.Sleep(10000);
                                     }
                                     catch (Exception ee)
                                     {
-                                        WriteLogNew.writeLog("找不到在线的server 时处理异常:" +ee.ToString(), logpath, "error");
+                                        WriteLogNew.writeLog("找不到在线的server 时处理异常:" + ee.ToString(), logpath, "error");
                                     }
                                 }
                             }
                             catch (Exception ee)
                             {
-                                WriteLogNew.writeLog("将原素材修改名称:" + mxffilepath+ee.ToString(), logpath, "error");
+                                WriteLogNew.writeLog("将原素材修改名称:" + mxffilepath + ee.ToString(), logpath, "error");
                             }
+                            #endregion
+                        }
+                        catch (Exception ee)
+                        {
+                            WriteLogNew.writeLog("avid schedule 异常:"  + ee.ToString(), logpath, "error");
+                        }
 
-                        } //xnews 系统
-
+                       
                     }//foreach (string mediaxml in mediaxmllists)
                 } //foreach (MediaInfos mi in mediainfoLists)
                 Thread.Sleep(Properties.Settings.Default.scanVideoInterval);
@@ -701,6 +669,7 @@ namespace avidInSchedule
             }
             return result;
         }
+
         /// <summary>
         /// 获取interplay的路径信息
         /// </summary>
